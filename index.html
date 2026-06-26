@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नेपाली सूचना बोर्ड</title>
+    
+    <!-- Google Fonts बाट "Akshar" नेपाली फन्ट लोड गरिएको छ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #121212;
+            margin: 0;
+            padding: 20px;
+            font-family: 'Akshar', 'Noto Sans Devanagari', sans-serif;
+        }
+
+        /* बोर्ड कन्टेनर जसले इमेज र टेक्स्टलाई एकै ठाउँमा राख्छ */
+        .notice-board-container {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* ब्ल्याकबोर्ड इमेज */
+        .board-bg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* इमेजको माथि टेक्स्ट राख्ने स्टाइल */
+        .board-overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            color: #ffffff; /* सेतो अक्षर */
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        /* फन्ट र टेक्स्टको ढाँचा */
+        .board-overlay-text h1 {
+            font-size: 3rem;
+            margin: 0 0 15px 0;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .board-overlay-text p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin: 10px 0;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .board-overlay-text .signature {
+            margin-top: 25px;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: right;
+            padding-right: 10%;
+        }
+
+        /* मोबाइल स्क्रिनका लागि रेस्पोन्सिभ साइज */
+        @media (max-width: 600px) {
+            .board-overlay-text h1 {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+            .board-overlay-text p {
+                font-size: 0.9rem;
+                line-height: 1.4;
+            }
+            .board-overlay-text .signature {
+                margin-top: 10px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="notice-board-container">
+        <!-- यहाँ तपाईंको GitHub को photos/backbord.png पाथ राखिएको छ (26455.png सँग मिल्दोजुल्दो) -->
+        <img src="photos/backbord.png" alt="Blackboard" class="board-bg">
+        
+        <!-- इमेजको माथि देखिने नेपाली सूचना -->
+        <div class="board-overlay-text">
+            <h1>सूचना !</h1>
+            <p>आदरणीय विद्यार्थी तथा अभिभावकज्यूहरू,</p>
+            <p>विशेष कारणवश भोलि मिति २०८३ साल असार २८ गते आइतबारका दिन विद्यालयको पठनपाठन बन्द रहने जानकारी गराइन्छ। सोमबारदेखि सबै कक्षाहरू नियमित रूपमा सञ्चालन हुनेछन्।</p>
+            <p class="signature">- प्रधानाध्यापक</p>
+        </div>
+    </div>
+
+</body>
+</html>
