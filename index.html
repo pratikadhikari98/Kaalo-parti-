@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>नेपाली सूचना बोर्ड</title>
+    <title>नेपाली सूचना बोर्ड - Mobile Friendly</title>
     
-    <!-- Google Fonts बाट "Akshar" नेपाली फन्ट लोड गरिएको छ -->
+    <!-- Google Fonts बाट "Akshar" नेपाली फन्ट -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@400;600;700&display=swap" rel="stylesheet">
@@ -14,93 +14,95 @@
         body {
             background-color: #121212;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             font-family: 'Akshar', 'Noto Sans Devanagari', sans-serif;
         }
 
-        /* बोर्ड कन्टेनर जसले इमेज र टेक्स्टलाई एकै ठाउँमा राख्छ */
+        /* बोर्ड कन्टेनर */
         .notice-board-container {
             position: relative;
-            max-width: 900px;
-            margin: 40px auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
+            max-width: 850px;
+            width: 95%; /* मोबाइलमा दायाँ-बायाँ टाँसिन नदिन */
+            margin: 30px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border-radius: 6px;
             overflow: hidden;
+            background-color: #000;
         }
 
-        /* ब्ल्याकबोर्ड इमेज */
+        /* ब्ल्याकबोर्ड ब्याकग्राउन्ड इमेज */
         .board-bg {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* इमेजको माथि टेक्स्ट राख्ने स्टाइल */
+        /* 
+           टेक्स्ट राख्ने बाकसलाई ब्ल्याकबोर्डको काठको फ्रेमभित्र मात्र सीमित (Constrain) गरिएको छ।
+           चारैतिरबाट % मार्जिन राख्दा इमेज सानो वा ठुलो हुँदा यो बाकस पनि फ्रेम भित्रै खुम्चिन्छ।
+        */
         .board-overlay-text {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            color: #ffffff; /* सेतो अक्षर */
-            text-align: center;
+            top: 14%;    /* माथिल्लो फ्रेमबाट सुरक्षित दूरी */
+            bottom: 14%; /* तल्लो फ्रेमबाट सुरक्षित दूरी */
+            left: 11%;   /* बायाँ फ्रेमबाट सुरक्षित दूरी */
+            right: 11%;  /* दायाँ फ्रेमबाट सुरक्षित दूरी */
             box-sizing: border-box;
+            color: #ffffff;
+            text-align: center;
         }
 
-        /* फन्ट र टेक्स्टको ढाँचा */
+        /* टेक्स्टलाई भर्टिकल्ली (माथि-तल) बीचमा मिलाउन */
+        .board-content-inner {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+        }
+
+        /* 
+           clamp() को प्रयोग गरेर फन्ट साइजलाई मोबाइल स्क्रिन अनुसार आफैं घट्ने-बढ्ने (Fluid) बनाइएको छ।
+           यसले गर्दा मोबाइलमा अक्षरहरू फ्रेमभन्दा बाहिर कहिल्यै जाँदैनन्।
+        */
         .board-overlay-text h1 {
-            font-size: 3rem;
-            margin: 0 0 15px 0;
+            font-size: clamp(18px, 4.5vw, 36px);
+            margin: 0 0 8px 0;
             font-weight: 700;
             letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
         }
 
         .board-overlay-text p {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            margin: 10px 0;
+            font-size: clamp(10px, 2.1vw, 17px);
+            line-height: 1.5;
+            margin: 6px 0;
             font-weight: 400;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
         }
 
         .board-overlay-text .signature {
-            margin-top: 25px;
-            font-size: 1.3rem;
-            font-style: italic;
+            margin-top: 12px;
+            font-size: clamp(9px, 1.9vw, 15px);
+            font-weight: 600;
             text-align: right;
-            padding-right: 10%;
-        }
-
-        /* मोबाइल स्क्रिनका लागि रेस्पोन्सिभ साइज */
-        @media (max-width: 600px) {
-            .board-overlay-text h1 {
-                font-size: 1.8rem;
-                margin-bottom: 5px;
-            }
-            .board-overlay-text p {
-                font-size: 0.9rem;
-                line-height: 1.4;
-            }
-            .board-overlay-text .signature {
-                margin-top: 10px;
-                font-size: 0.8rem;
-            }
+            padding-right: 5%;
         }
     </style>
 </head>
 <body>
 
     <div class="notice-board-container">
-        <!-- यहाँ तपाईंको GitHub को photos/backbord.png पाथ राखिएको छ (26455.png सँग मिल्दोजुल्दो) -->
+        <!-- GitHub को photos/backbord.png पाथ -->
         <img src="photos/backbord.png" alt="Blackboard" class="board-bg">
         
-        <!-- इमेजको माथि देखिने नेपाली सूचना -->
+        <!-- काठको फ्रेम भित्र मात्र अट्ने सुरक्षित टेक्स्ट एरिया -->
         <div class="board-overlay-text">
-            <h1>सूचना !</h1>
-            <p>आदरणीय विद्यार्थी तथा अभिभावकज्यूहरू,</p>
-            <p>विशेष कारणवश भोलि मिति २०८३ साल असार २८ गते आइतबारका दिन विद्यालयको पठनपाठन बन्द रहने जानकारी गराइन्छ। सोमबारदेखि सबै कक्षाहरू नियमित रूपमा सञ्चालन हुनेछन्।</p>
-            <p class="signature">- प्रधानाध्यापक</p>
+            <div class="board-content-inner">
+                <h1>सूचना !</h1>
+                <p>आदरणीय विद्यार्थी तथा अभिभावकज्यूहरू,</p>
+                <p>विशेष कारणवश भोलि मिति २०८३ साल असार २८ गते आइतबारका दिन विद्यालयको पठनपाठन बन्द रहने जानकारी गराइन्छ। सोमबारदेखि सबै कक्षहरू नियमित रूपमा सञ्चालन हुनेछन्।</p>
+                <p class="signature">- प्रधानाध्यापक</p>
+            </div>
         </div>
     </div>
 
